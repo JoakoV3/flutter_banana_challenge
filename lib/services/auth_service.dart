@@ -1,11 +1,10 @@
-import 'package:dio/dio.dart';
 import 'package:flutter_banana_challenge/models/user_model.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
+import '../constants/constants.dart';
+
 class AuthService {
-  final url = 'https://dummyjson.com';
   final storage = const FlutterSecureStorage();
-  final dio = Dio();
 
   Future<String> getToken() async {
     return await storage.read(key: 'auth_token') ?? '';
