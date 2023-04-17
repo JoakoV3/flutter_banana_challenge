@@ -37,7 +37,7 @@ class AuthService {
         '$url/auth/login',
         data: {'username': userName, 'password': password},
       );
-      final user = UserModel.fromRawJson(response.data);
+      final user = UserModel.fromJson(response.data);
       return user;
     } catch (e) {
       //Return empty model

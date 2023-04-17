@@ -14,10 +14,12 @@ class AuthViewModel extends ChangeNotifier {
 
   bool get isLoggedIn => _user != UserModel.empty;
 
-  Future<void> login(String email, String password) async {
+  Future<bool> login(String email, String password) async {
     final user = await authService.login(email, password);
+    if (user == UserModel.empty) return false;
     _user = user;
     notifyListeners();
+    return true;
   }
 
   Future<void> logout() async {

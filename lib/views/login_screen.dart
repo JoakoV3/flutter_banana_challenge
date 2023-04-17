@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_banana_challenge/viewModels/auth_view_model.dart';
 import 'package:flutter_banana_challenge/views/widgets/widgets.dart';
+import 'package:provider/provider.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -12,7 +14,21 @@ class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
 
-  void handleLogin(BuildContext context) {}
+  void handleLogin(BuildContext context) async {
+    final authViewModel = context.read<AuthViewModel>();
+    final login = await authViewModel.login(
+      emailController.text.trim(),
+      passwordController.text.trim(),
+    );
+    if (!login && mounted) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Usuario o contraseña incorrectos'),
+          backgroundColor: Colors.red,
+        ),
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
