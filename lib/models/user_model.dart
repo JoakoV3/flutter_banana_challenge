@@ -47,4 +47,15 @@ class UserModel {
         "image": image,
         "token": token,
       };
+
+  //Create empty user
+  static final empty = UserModel(
+      id: 0,
+      username: '',
+      email: '',
+      firstName: '',
+      lastName: '',
+      gender: '',
+      image: '',
+      token: '');
 }

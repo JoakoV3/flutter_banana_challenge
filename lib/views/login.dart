@@ -59,7 +59,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         minimumSize: const Size.fromHeight(40),
                       ),
                       onPressed: () => handleLogin(context),
-                      child: const Text('Login'),
+                      child: const Text('Ingresar'),
                     ),
                   ],
                 ),
