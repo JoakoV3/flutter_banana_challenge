@@ -13,20 +13,23 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
+  final _formKey = GlobalKey<FormState>();
 
   void handleLogin(BuildContext context) async {
-    final authViewModel = context.read<AuthViewModel>();
-    final login = await authViewModel.login(
-      emailController.text.trim(),
-      passwordController.text.trim(),
-    );
-    if (!login && mounted) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('Usuario o contraseña incorrectos'),
-          backgroundColor: Colors.red,
-        ),
+    if (_formKey.currentState!.validate()) {
+      final authViewModel = context.read<AuthViewModel>();
+      final login = await authViewModel.login(
+        emailController.text.trim(),
+        passwordController.text.trim(),
       );
+      if (!login && mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text('Usuario o contraseña incorrectos'),
+            backgroundColor: Colors.red,
+          ),
+        );
+      }
     }
   }
 
@@ -56,6 +59,7 @@ class _LoginScreenState extends State<LoginScreen> {
             SizedBox(
               width: MediaQuery.of(context).size.width * 0.8,
               child: Form(
+                key: _formKey,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [

@@ -18,6 +18,8 @@ class TextFormLogin extends StatelessWidget {
       controller: emailController,
       obscureText: obscure,
       decoration: InputDecoration(hintText: hinText),
+      validator: (value) =>
+          value!.isEmpty ? 'El campo no debe estar vacío' : null,
     );
   }
 }
