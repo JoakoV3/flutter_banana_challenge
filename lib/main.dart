@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_banana_challenge/views/views.dart';
 
 void main() {
   runApp(const MyApp());
@@ -10,9 +11,15 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       title: 'Flutter Demo',
-      home: Text('Flutter Demo Home Page'),
+      theme: ThemeData(
+        colorScheme: const ColorScheme.light().copyWith(
+          primary: const Color(0xff9e007e),
+          secondary: const Color(0xff9e007e),
+        ),
+      ),
+      home: const AuthWrapperScreen(),
     );
   }
 }
