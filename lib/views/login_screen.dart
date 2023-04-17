@@ -66,6 +66,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     TextFormLogin(
                       emailController: passwordController,
                       hinText: 'Contraseña',
+                      obscure: true,
                     ),
                     const SizedBox(
                       height: 20,

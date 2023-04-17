@@ -24,10 +24,9 @@ class AuthService {
     await storage.delete(key: 'auth_token');
   }
 
-  Future<bool> isAuthenticated() async {
+  Future<String> isAuthenticated() async {
     // check if authentication token exists
-    String? token = await storage.read(key: 'auth_token');
-    return token != null;
+    return await storage.read(key: 'auth_token') ?? '';
   }
 
   Future<UserModel> _authenticateUser(String userName, String password) async {

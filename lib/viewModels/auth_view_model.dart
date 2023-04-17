@@ -8,11 +8,18 @@ class AuthViewModel extends ChangeNotifier {
 
   AuthViewModel({required this.authService});
 
+  //constructor to check stoarage for token
+  AuthViewModel.checkAuthStatus({required this.authService}) {
+    checkAuthStatus();
+  }
+
+  String token = '';
+
   UserModel _user = UserModel.empty;
 
   UserModel get user => _user;
 
-  bool get isLoggedIn => _user != UserModel.empty;
+  bool get isLoggedIn => token != '';
 
   Future<bool> login(String email, String password) async {
     final user = await authService.login(email, password);
@@ -28,7 +35,9 @@ class AuthViewModel extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future<bool> checkAuthStatus() async {
-    return await authService.isAuthenticated();
+  Future<void> checkAuthStatus() async {
+    final tokenResponse = await authService.isAuthenticated();
+    token = tokenResponse;
+    notifyListeners();
   }
 }
