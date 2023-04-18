@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_banana_challenge/models/user_model.dart';
 import 'package:flutter_banana_challenge/viewModels/auth_view_model.dart';
 import 'package:flutter_banana_challenge/views/views.dart';
 import 'package:provider/provider.dart';

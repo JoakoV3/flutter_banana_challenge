@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_banana_challenge/viewModels/product_view_model.dart';
 import 'package:provider/provider.dart';
 
 import 'package:flutter_banana_challenge/services/auth_service.dart';
@@ -18,6 +19,8 @@ class MyApp extends StatelessWidget {
     final authService = AuthService();
     return MultiProvider(
       providers: [
+        ChangeNotifierProvider<ProductViewModel>(
+            create: (context) => ProductViewModel()),
         ChangeNotifierProvider<AuthViewModel>(
           create: (context) => AuthViewModel(authService: authService),
         )
