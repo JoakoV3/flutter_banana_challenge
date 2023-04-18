@@ -9,11 +9,14 @@ class ProductViewModel extends ChangeNotifier {
   final ProductService productService = ProductService();
   List<ProductModel> products = [];
   List<ProductModel> searchResults = [];
+  bool loading = false;
   String query = '';
   Timer? debounce;
 
   Future<void> getProducts() async {
+    loading = true;
     products = await productService.getProducts();
+    loading = false;
     notifyListeners();
   }
 

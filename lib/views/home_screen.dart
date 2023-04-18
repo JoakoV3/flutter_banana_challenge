@@ -35,6 +35,9 @@ class HomeScreen extends StatelessWidget {
       body: Center(
         child: Consumer<ProductViewModel>(
           builder: (context, state, child) {
+            if (state.loading) {
+              return Image.asset('assets/images/loading.gif', width: 150);
+            }
             return ListView.builder(
               itemCount: state.products.length,
               shrinkWrap: true,
