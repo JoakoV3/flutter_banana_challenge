@@ -11,7 +11,7 @@ Para realizar la aplicación utilice las tecnologias sugeridas en el challenge:
 
   - Flutter
   - Provider
-  - Patron MMVM
+  - Patron MVVM
 
 ## Estructura de carpetas
 
