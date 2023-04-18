@@ -23,7 +23,7 @@ La estructura de carpetas es del patron MMVM, la cual consiste en 3 carpetas pri
     - widgets
     - Routes
 
-  A estro tambien le sumé: 
+  A esto tambien le sumé: 
   - services
   - constants 
 
@@ -41,9 +41,9 @@ La estructura de carpetas es del patron MMVM, la cual consiste en 3 carpetas pri
 
 Para realizar las peticiones utilice la API de dummyjson, la cual se encuentra en el siguiente link: https://dummyapi.io/data/api
 
-## Como correr el proyecto
+## Cómo correr el proyecto
 
-Para correr el proyecto es necesario tener instalado flutter, para mas informacion sobre como instalarlo se puede visitar el siguiente link: https://flutter.dev/docs/get-started/install
+Para correr el proyecto es necesario tener instalado flutter, para mas información sobre como instalarlo se puede visitar el siguiente link: https://flutter.dev/docs/get-started/install
 
 Una vez instalado flutter, se debe clonar el proyecto y ejecutar el siguiente comando en la carpeta del proyecto:
 
