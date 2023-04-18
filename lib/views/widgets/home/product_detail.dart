@@ -84,6 +84,7 @@ class _ProductBody extends StatelessWidget {
   final ProductModel product;
   @override
   Widget build(BuildContext context) {
+    //Format the price to show the currency symbol and 2 decimal places.
     final formattedPrice = NumberFormat.currency(
       decimalDigits: 2,
       symbol: '\$',
