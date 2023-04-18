@@ -17,12 +17,18 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Flutter Challenge 2023'),
+        leading: IconButton(
+          onPressed: () {
+            authViewModel.logout();
+          },
+          icon: const Icon(Icons.logout),
+        ),
         actions: [
           IconButton(
             onPressed: () {
-              authViewModel.logout();
+              showSearch(context: context, delegate: ProductsSearchDelegate());
             },
-            icon: const Icon(Icons.logout),
+            icon: const Icon(Icons.search),
           ),
         ],
       ),

@@ -1,3 +1,4 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_banana_challenge/constants/constants.dart';
 
@@ -40,7 +41,7 @@ class _ProductAppBar extends StatelessWidget {
       pinned: true,
       flexibleSpace: FlexibleSpaceBar(
         centerTitle: true,
-        title: Text(product.title),
+        title: Text(product.title, style: const TextStyle(fontSize: 15)),
         background: Hero(
           tag: product.id,
           //Material is to solve the problem of the hero animation with red texts.
@@ -114,6 +115,24 @@ class _ProductBody extends StatelessWidget {
               fontWeight: FontWeight.w500,
               color: Colors.grey,
             ),
+          ),
+          CarouselSlider(
+            options: CarouselOptions(height: 200.0),
+            items: product.images.map((image) {
+              return Builder(
+                builder: (BuildContext context) {
+                  return Container(
+                    margin: const EdgeInsets.only(top: 10, left: 5, right: 5),
+                    child: FadeInImage(
+                      fit: BoxFit.cover,
+                      placeholder:
+                          const AssetImage('assets/images/loading.gif'),
+                      image: NetworkImage(image),
+                    ),
+                  );
+                },
+              );
+            }).toList(),
           ),
           Align(
             alignment: Alignment.topCenter,

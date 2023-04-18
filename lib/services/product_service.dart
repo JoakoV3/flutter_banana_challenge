@@ -17,4 +17,17 @@ class ProductService {
       return [];
     }
   }
+
+  Future<List<ProductModel>> searchProducts(String query) async {
+    try {
+      final response = await dio.get('$url/products/search?q=$query');
+      final List products = response.data['products'] as List;
+      final List<ProductModel> prods =
+          products.map((prod) => ProductModel.fromJson(prod)).toList();
+      return prods;
+    } catch (e) {
+      log(e.toString());
+      return [];
+    }
+  }
 }
