@@ -8,5 +8,6 @@ class ProductViewModel extends ChangeNotifier {
 
   Future<void> getProducts() async {
     products = await productService.getProducts();
+    notifyListeners();
   }
 }

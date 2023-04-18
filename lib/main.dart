@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_banana_challenge/constants/constants.dart';
 import 'package:flutter_banana_challenge/viewModels/product_view_model.dart';
+import 'package:flutter_banana_challenge/views/routes/routes.dart';
 import 'package:provider/provider.dart';
 
 import 'package:flutter_banana_challenge/services/auth_service.dart';
@@ -27,10 +29,10 @@ class MyApp extends StatelessWidget {
       ],
       child: MaterialApp(
         title: 'Banana Challenge',
+        routes: routes,
         theme: ThemeData(
           colorScheme: const ColorScheme.light().copyWith(
-            primary: const Color(0xff9e007e),
-            secondary: const Color(0xff9e007e),
+            primary: primaryColor,
           ),
         ),
         home: const AuthWrapperScreen(),
