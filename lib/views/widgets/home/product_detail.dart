@@ -1,6 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_banana_challenge/constants/constants.dart';
+import 'package:intl/intl.dart';
 
 import '../../../models/product_model.dart';
 
@@ -83,6 +84,10 @@ class _ProductBody extends StatelessWidget {
   final ProductModel product;
   @override
   Widget build(BuildContext context) {
+    final formattedPrice = NumberFormat.currency(
+      decimalDigits: 2,
+      symbol: '\$',
+    ).format(product.price);
     final size = MediaQuery.of(context).size;
     return Container(
       padding: const EdgeInsets.all(20),
@@ -101,7 +106,7 @@ class _ProductBody extends StatelessWidget {
                 ),
               ),
               Text(
-                "USD\$${product.price.toString()}",
+                "USD$formattedPrice",
                 style: const TextStyle(
                     color: primaryColor, fontWeight: FontWeight.bold),
               ),

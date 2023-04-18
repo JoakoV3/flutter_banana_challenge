@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_banana_challenge/models/product_model.dart';
+import 'package:intl/intl.dart';
 
 class ProductWidget extends StatelessWidget {
   const ProductWidget({super.key, required this.product});
@@ -7,6 +8,10 @@ class ProductWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final formattedPrice = NumberFormat.currency(
+      decimalDigits: 2,
+      symbol: '\$',
+    ).format(product.price);
     return Hero(
       tag: product.id,
       //Material is to solve the problem of the hero animation with red texts.
@@ -64,7 +69,7 @@ class ProductWidget extends StatelessWidget {
                       ),
                       const SizedBox(height: 8),
                       Text(
-                        'USD\$${product.price.toString()}',
+                        'USD$formattedPrice',
                         style: const TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.w800,
