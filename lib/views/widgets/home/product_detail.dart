@@ -134,45 +134,67 @@ class _ProductBody extends StatelessWidget {
               );
             }).toList(),
           ),
-          Align(
-            alignment: Alignment.topCenter,
-            child: Container(
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(10),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.grey.withOpacity(0.5),
-                    spreadRadius: 1,
-                    blurRadius: 3,
-                    offset: const Offset(0, 3), // changes position of shadow
-                  ),
-                ],
-              ),
-              margin: const EdgeInsets.only(top: 20),
-              padding: const EdgeInsets.all(20),
-              width: size.width * 0.85,
-              child: Column(
-                children: [
-                  Text(product.description),
-                  const SizedBox(height: 10),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Row(
-                        children: [
-                          Icon(Icons.star, color: Colors.yellow[700]),
-                          Text(product.rating.toString())
-                        ],
-                      ),
-                      Text("Stock: ${product.stock}")
-                    ],
-                  )
-                ],
-              ),
-            ),
-          ),
+          //This is just to show the banner
+          ProdDescription(size: size, product: product),
+          ProdDescription(size: size, product: product),
+          ProdDescription(size: size, product: product),
+          ProdDescription(size: size, product: product),
         ],
+      ),
+    );
+  }
+}
+
+class ProdDescription extends StatelessWidget {
+  const ProdDescription({
+    super.key,
+    required this.size,
+    required this.product,
+  });
+
+  final Size size;
+  final ProductModel product;
+
+  @override
+  Widget build(BuildContext context) {
+    return Align(
+      alignment: Alignment.topCenter,
+      child: Container(
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(10),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.5),
+              spreadRadius: 1,
+              blurRadius: 3,
+              offset: const Offset(0, 3), // changes position of shadow
+            ),
+          ],
+        ),
+        margin: const EdgeInsets.only(top: 20),
+        padding: const EdgeInsets.all(20),
+        width: size.width * 0.85,
+        child: Column(
+          children: [
+            Text(
+              product.description,
+            ),
+            const SizedBox(height: 10),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Row(
+                  children: [
+                    Icon(Icons.star, color: Colors.yellow[700]),
+                    Text(product.rating.toString())
+                  ],
+                ),
+                Text("Stock: ${product.stock}")
+              ],
+            )
+          ],
+        ),
       ),
     );
   }

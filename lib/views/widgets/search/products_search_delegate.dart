@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_banana_challenge/viewModels/product_view_model.dart';
+import 'package:flutter_banana_challenge/views/widgets/widgets.dart';
 import 'package:provider/provider.dart';
 
 class ProductsSearchDelegate extends SearchDelegate {
@@ -30,8 +31,23 @@ class ProductsSearchDelegate extends SearchDelegate {
 
   @override
   Widget buildResults(BuildContext context) {
-    // TODO: Implement search results page
-    return Container();
+    return Consumer<ProductViewModel>(
+      builder: (context, state, child) {
+        if (state.searchResults.isEmpty) {
+          return const Center(
+            child: Text('No se encontraron resultados'),
+          );
+        }
+        return ListView.builder(
+          itemCount: state.searchResults.length,
+          shrinkWrap: true,
+          itemBuilder: (context, index) {
+            final product = state.searchResults[index];
+            return ProductSearchWidget(product: product);
+          },
+        );
+      },
+    );
   }
 
   @override
@@ -47,15 +63,17 @@ class ProductsSearchDelegate extends SearchDelegate {
     return Consumer<ProductViewModel>(
       builder: (context, state, child) {
         productsProvider.searchProducts(query);
+        if (state.searchResults.isEmpty) {
+          return const Center(
+            child: Text('No se encontraron resultados'),
+          );
+        }
         return ListView.builder(
           itemCount: state.searchResults.length,
           shrinkWrap: true,
           itemBuilder: (context, index) {
             final product = state.searchResults[index];
-            return ListTile(
-              title: Text(product.title),
-              subtitle: Text(product.description),
-            );
+            return ProductSearchWidget(product: product);
           },
         );
       },
